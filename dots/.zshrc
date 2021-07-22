@@ -105,12 +105,17 @@ killPort(){
         sudo kill -9 $(sudo lsof -t -i:$1)
 }
 
+curlJsonFormat(){
+	curl $1 | python -m json.tool
+}
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias killPort='killPort'
 alias ls='colorls --sd'
 alias lsa='colorls --sd -A'
+alias curlj='curlJsonFormat'
 #lauch neofetch
 neofetch --ascii_distro arch
 
