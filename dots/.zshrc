@@ -100,7 +100,10 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-#my custom functions
+######################
+# MY CUSTOM FUNCTION #
+#####################
+
 killPort(){
         sudo kill -9 $(sudo lsof -t -i:$1)
 }
@@ -109,15 +112,37 @@ curlJsonFormat(){
 	curl $1 | python -m json.tool
 }
 
+###################
+# MY CUSTOM ALIAS #
+###################
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# kill custom port
 alias killPort='killPort'
 alias ls='colorls --sd'
 alias lsa='colorls --sd -A'
+
+# json format to cutl response
 alias curlj='curlJsonFormat'
+
+# call vim
+alias v='vim'
+
+# call nvim
+alias n='nvim'
+
+###################
+# CUSTOM BEHAVIOR #
+###################
+
 #lauch neofetch
 neofetch --ascii_distro arch
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# add Highlighting style in tmux session
+export TERM=xterm-256color
