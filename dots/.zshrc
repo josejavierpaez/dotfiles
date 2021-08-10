@@ -130,10 +130,14 @@ alias curlj='curlJsonFormat'
 
 # call vim
 alias v='vim'
+#open vim in actual dir
+alias vvd='ls'
 
 # call nvim
 alias n='nvim'
 
+#open nvim in actual dir
+alias nn='nvim .'
 ###################
 # CUSTOM BEHAVIOR #
 ###################
