@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/labcode/.oh-my-zsh"
+export ZSH="/home/javier/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,7 +72,8 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  zsh-syntax-highlighting	
+  dnf
+  zsh-syntax-highlighting
   zsh-autosuggestions
 )
 
@@ -100,6 +101,10 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
 ######################
 # MY CUSTOM FUNCTION #
 #####################
@@ -109,27 +114,17 @@ killPort(){
 }
 
 curlJsonFormat(){
-	curl $1 | python -m json.tool
+        curl $1 | python -m json.tool
 }
+
 
 ###################
 # MY CUSTOM ALIAS #
 ###################
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# kill custom port
-alias killPort='killPort'
-alias ls='colorls --sd'
-alias lsa='colorls --sd -A'
-
-# json format to cutl response
-alias curlj='curlJsonFormat'
-
 # call vim
 alias v='vim'
+
 #open vim in actual dir
 alias vvd='ls'
 
@@ -138,15 +133,24 @@ alias n='nvim'
 
 #open nvim in actual dir
 alias nn='nvim .'
+
+# json format to cutl response
+alias curlj='curlJsonFormat'
+
+# kill custom port
+alias killPort='killPort'
+
 ###################
 # CUSTOM BEHAVIOR #
 ###################
 
 #lauch neofetch
-neofetch --ascii_distro arch
+#neofetch --ascii_distro arch
+
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # add Highlighting style in tmux session
 export TERM=xterm-256color
+
