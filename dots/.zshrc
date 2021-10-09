@@ -140,6 +140,9 @@ alias curlj='curlJsonFormat'
 # kill custom port
 alias killPort='killPort'
 
+# mock server
+alias mock-server='node ~/DesktopJp/projects/mock-server/src/app.js'
+
 ###################
 # CUSTOM BEHAVIOR #
 ###################
@@ -152,5 +155,9 @@ alias killPort='killPort'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # add Highlighting style in tmux session
-export TERM=xterm-256color
+# export TERM=xterm-256color
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
