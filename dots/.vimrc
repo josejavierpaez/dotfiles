@@ -7,7 +7,7 @@ set showcmd
 set ruler
 set encoding=utf-8
 set showmatch
-set sw=4
+set sw=2
 set relativenumber
 set laststatus=2
 
@@ -20,6 +20,16 @@ call plug#begin('~/.vim/plugged')
 """""""""
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
+
+"""""""
+" IDE "
+"""""""
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
+Plug 'neoclide/coc.nvim'
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 """""""""""""""""""""""
@@ -41,14 +51,6 @@ if (empty($TMUX))
   endif
 endif
 
-let color_path = expand('~/.vim/color.vim')
-if filereadable(color_path)
-  exec 'source' color_path
-else
-  " Default color scheme
-  colorscheme pink-moon
-endif
-
 
 let g:lightline = {
   \ 'colorscheme': 'onedark',
@@ -62,3 +64,11 @@ packadd! dracula
 syntax enable
 colorscheme dracula
 
+let NERDTreeQuitOnOpen=1
+let mapleader=" "
+
+" call nerdTree
+nmap <Leader>nt :NERDTreeFind<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q<CR>
+nmap <Leader>wq :wq<CR>
