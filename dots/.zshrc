@@ -143,6 +143,9 @@ alias killPort='killPort'
 # mock server
 alias mock-server='node ~/DesktopJp/projects/mock-server/src/app.js'
 
+# make dir alias
+alias mkd='mkdir'
+
 ###################
 # CUSTOM BEHAVIOR #
 ###################
