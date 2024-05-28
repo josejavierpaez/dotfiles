@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/javier/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -23,14 +23,13 @@ ZSH_THEME="robbyrussell"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -45,8 +44,9 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -71,10 +71,10 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  dnf
-  zsh-syntax-highlighting
-  zsh-autosuggestions
+    git
+    dnf
+    zsh-syntax-highlighting
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -104,18 +104,37 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
 ######################
 # MY CUSTOM FUNCTION #
 #####################
 
 killPort(){
-        sudo kill -9 $(sudo lsof -t -i:$1)
+        kill -9 $(sudo lsof -t -i:$1)
 }
 
 curlJsonFormat(){
         curl $1 | python -m json.tool
 }
+
+# conecta mi git local a la cuenta remota que le indique
+git_account_login() {
+    param1=$1
+
+    if [[ "$param1" == "-personal" ]]; then
+        echo "Login to personal account..."
+        # Aquí puedes agregar las acciones específicas para la cuenta personal
+        ssh -T git@github.com-personal
+    elif [[ "$param1" == "-cencosud" ]]; then
+        echo "Login to cencosud account..."
+        # Aquí puedes agregar las acciones específicas para la cuenta de Cencosud
+        ssh -T git@github.com-cencosud
+    else
+        echo "Param not found. Usa -personal o -cencosud."
+    fi
+}
+
+# Llamar a la función con los parámetros proporcionados
+mi_funcion $1 $2
 
 
 ###################
@@ -140,27 +159,21 @@ alias curlj='curlJsonFormat'
 # kill custom port
 alias killPort='killPort'
 
-# mock server
-alias mock-server='node ~/DesktopJp/projects/mock-server/src/app.js'
+# move to kubera
+alias kubera='~/jp/workprojects/kubera/'
 
-# make dir alias
-alias mkd='mkdir'
+# move to acid
+alias cenco='~/jp/workprojects/acid/sponsored-products/'
 
-###################
-# CUSTOM BEHAVIOR #
-###################
+# login personal git
+alias cenco='~/jp/workprojects/acid/sponsored-products/'
 
-#lauch neofetch
-#neofetch --ascii_distro arch
-
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# add Highlighting style in tmux session
-# export TERM=xterm-256color
+# login personal git
+alias gitlg='git_account_login'
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+alias python=/usr/bin/python3
+alias python=/usr/bin/python3
