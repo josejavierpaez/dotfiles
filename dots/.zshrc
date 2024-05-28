@@ -133,9 +133,6 @@ git_account_login() {
     fi
 }
 
-# Llamar a la función con los parámetros proporcionados
-mi_funcion $1 $2
-
 
 ###################
 # MY CUSTOM ALIAS #
